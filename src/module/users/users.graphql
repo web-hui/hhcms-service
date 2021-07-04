@@ -1,0 +1,34 @@
+"查询用户信息"
+type Query {
+  "查询所有用户信息"
+  users: [User]
+  "根据用户id查询用户信息"
+  user(id: ID!): User
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput): User
+  changeUser(user: CreateUserInput): User
+  deleteUser(id: String!): User
+}
+
+type Subscription {
+  userCreated: User
+}
+
+"用户信息"
+type User {
+  _id: String!
+  "用户id"
+  id: Int
+  "用户名称"
+  name: String
+  "用户年龄"
+  age: Int
+}
+
+input CreateUserInput {
+  id: String
+  name: String
+  age: Int
+}
